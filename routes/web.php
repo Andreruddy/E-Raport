@@ -27,6 +27,7 @@ Route::post('/login', 'Auth\LoginController@login')->name('login');
 
 Route::group(['middleware' => ['auth', 'cekRoles:admin']], function () {
     //mapel
+    Route::get('mapel', 'mapelController@mapel')->name('mapel');
     Route::get('mapel/tambahmapel', 'mapelController@tambahMapel')->name('tambahMapel');
     Route::post('mapel/simpanmapel', 'mapelController@simpanMapel')->name('simpanMapel');
     Route::get('mapel/editmapel{id}', 'mapelController@editMapel')->name('editMapel');
@@ -49,12 +50,11 @@ Route::group(['middleware' => ['auth', 'cekRoles:admin']], function () {
     Route::get('siswa/input{id}', 'siswaController@inputnilai')->name('inputnilai');
     Route::post('siswa/simpaninput{id}', 'siswaController@simpanNilai')->name('simpanimput');
     Route::post('siswa/simpaninput{id}', 'siswaController@simpanNilai')->name('simpanimput');
-    Route::get('siswa/nilai', 'siswaController@tampilnilai')->name('nilai');
 });
 
 Route::group(['middleware' => ['auth', 'cekRoles:admin,siswa']], function () {
+    Route::get('siswa/nilai', 'siswaController@tampilnilai')->name('nilai');
     Route::get('dashboard', 'dashController@dashboard')->name('dashboard');
-    Route::get('mapel', 'mapelController@mapel')->name('mapel');
     // Route::get('siswa/input{id}', 'siswaController@inputnilai')->name('nilaiSiswa');
     Route::get('logout', 'Auth\LoginController@Logout')->name('logout');
 });

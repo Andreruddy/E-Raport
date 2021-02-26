@@ -25,7 +25,7 @@ class authController extends Controller
 
     public function login(Request $request)
     {
-        if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
+        if(Auth::attempt(['email' => $request->nis, 'password' => $request->password])){
                         return redirect('dashboard');
                     }
                     return redirect('/')->with('message','Email atau Password Salah !!');

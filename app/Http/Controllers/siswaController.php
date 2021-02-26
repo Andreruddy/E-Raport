@@ -103,8 +103,9 @@ class siswaController extends Controller
     }
 
     public function tampilnilai(){
+        
         $siswa = siswa::all();
-        dd($siswa);
+        // dd($siswa);
         $mapel = mapel::with('siswa')->get();
         // dd($mapel);
         return view('nilaiSiswa', ['siswa'=>$siswa, 'mapel'=>$mapel]);

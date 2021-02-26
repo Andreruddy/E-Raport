@@ -16,11 +16,12 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($siswa[0]->mapel as $nilai)
+                        @foreach ($mapel as $nilai)
+                        {{-- {{dd($nilai)}} --}}
                         <tr>
-                            <td>{{$maple->siswa->nama_siswa}}</td>
-                            <td>{{$mapel->nama_mapel}}</td>
-                            <td>{{$nilai->pivot->nilai}}</td>
+                            <td>{{$nilai->siswa[0]->nama_siswa}}</td>
+                            <td>{{$nilai->nama_mapel}}</td>
+                            <td>{{$nilai->siswa[0]->pivot->nilai}}</td>
                         </tr>
                         @endforeach
                     </tbody>

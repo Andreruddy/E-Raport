@@ -12,8 +12,14 @@ class mapel extends Model
         'kd_mapel', 'nama_mapel', 'pengajar'
     ];
 
-    public function siswa() {
-        return $this->belongsToMany(siswa::class)->withPivot('siswa_id','mapel_id','nilai')->withTimestamps();
+    public function siswa()
+    {
+        return $this->belongsToMany(siswa::class)->withPivot('siswa_id', 'mapel_id', 'nilai')->withTimestamps();
+    }
+
+    public function mapel()
+    {
+        // Setiap user akan memiliki banyak data
+        return $this->hasMany(mapel::class, 'user_id');
     }
 }
-
